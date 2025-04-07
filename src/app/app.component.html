@@ -1,3 +1,66 @@
-<div *ngFor="let numero of numerosRifa">
-  <div>{{ numero }}</div>
+<!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div class="example-row ">
+    <div *ngFor="let numero of numerosRifa" class="example-item " (click)="numeroSelected(numero)">{{ numero }}</div>
+  </div>
+</cdk-virtual-scroll-viewport> -->
+
+
+<!-- <div class="boletos-container">
+  <div
+    class="boleto"
+    *ngFor="let boleto of data"
+    [ngClass]="boleto.estado"
+  >
+    {{ boleto.number_tk }}
+  </div>
+</div> -->
+
+
+<div class="sorteo-container">
+  <div class="sorteo-header">
+    <h1>¡Gana un Mustang en nuestro Sorteo VIP!</h1>
+  </div>
+
+  <div class="sorteo-details">
+    <img class="mustang-image" src="assets/mustang.jpg" alt="Mustang">
+    <div class="sorteo-info">
+      <p><strong>Premio:</strong> Un Mustang 2025</p>
+      <p><strong>Fecha de Sorteo:</strong> 15 de mayo, 2025</p>
+      <p><strong>Participa:</strong> Compra tu boleto por solo $100</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <button class="participar-btn">¡Participa Ahora!</button>
+  </div>
 </div>
+
+
+
+<div class="boletos-wrapper">
+  <div class="boletos-container">
+    <div
+      class="boleto"
+      *ngFor="let boleto of data"
+
+    >
+    {{ boleto.number_tk }}
+    {{boleto.opportunities}}
+    </div>
+  </div>
+</div>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<hr>
+<hr>
+<hr>
