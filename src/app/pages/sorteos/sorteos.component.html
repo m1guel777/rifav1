@@ -1,0 +1,26 @@
+
+
+<button (click)="salir()">Salir</button>
+
+<div class="boletos-wrapper">
+  <div class="boletos-container">
+    <div
+      class="boleto"
+      *ngFor="let boleto of data1"
+
+    >
+    {{ boleto.number_tk }}
+            {{boleto.opportunities}}
+    </div>
+  </div>
+</div>
+
+
+
+<br>
+<br>
+<br>
+<hr>
+<hr>
+
+

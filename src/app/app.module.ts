@@ -8,10 +8,14 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './pages/home/home.component';
+import { SorteosComponent } from './pages/sorteos/sorteos.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    SorteosComponent
   ],
   imports: [
     BrowserModule,

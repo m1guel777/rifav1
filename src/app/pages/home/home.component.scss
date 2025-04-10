@@ -1,0 +1,36 @@
+.sorteos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.sorteo-card {
+  width: 300px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.sorteo-card:hover {
+  transform: translateY(-5px);
+}
+
+.btn-ver {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-ver:hover {
+  background-color: #0056b3;
+}

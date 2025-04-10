@@ -39,6 +39,7 @@ export class AppComponent implements OnInit{
   numerosRifa: String[] = [];
 
   public data : any;
+  public data1 : any;
 
   constructor(private  serv: BoletosService){
     this.generarNumerosRifa();
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
 
     this.getTickets();
+    // this.getRaffleByid();
   }
 
   //99999
@@ -71,7 +73,7 @@ export class AppComponent implements OnInit{
       next: (rs: IApiResponseDto) => {
 
         if (!rs.error) {
-          console.log("boletos :" , rs);
+          console.log("boletos raflle 1:" , rs);
           this.data = rs.data;
         } else {
           console.log("error :" , rs);
@@ -84,6 +86,29 @@ export class AppComponent implements OnInit{
       }
     });
   }
+
+  // async getRaffleByid(){
+
+  //   this.serv.getRaffleByid().subscribe({
+  //     next: (rs: IApiResponseDto) => {
+
+  //       if (!rs.error) {
+  //         console.log("boletos raffle 2:" , rs);
+  //         this.data1 = rs.data;
+  //       } else {
+  //         console.log("error :" , rs);
+  //       }
+  //     },
+  //     error: (e) => {
+
+  //       console.log("error  : Exception" , e.message);
+
+  //     }
+  //   });
+  // }
+
+
+
 
 
 
