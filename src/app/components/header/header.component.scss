@@ -1,0 +1,65 @@
+/* Estilos para el header */
+.custom-header {
+  background-color: #000; /* Color de fondo negro */
+  color: white;
+  height: 60px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 40px; /* Ajusta el tamaño de tu logo */
+}
+
+.cart-btn {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.ui-core-asside-cart {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Lo coloca fuera de la pantalla inicialmente */
+  width: 300px;
+  height: 100%;
+  background-color: #000;
+  color: white;
+  transition: right 0.3s ease;
+  box-shadow: -4px 0px 6px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.ui-core-asside-cart.open {
+  right: 0; /* Cuando la clase "open" se agrega, el carrito se despliega */
+}
+
+.cart-content {
+  padding: 20px;
+}
+
+.cart-content h3 {
+  color: white;
+}
+
+.cart-content button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}

@@ -1,0 +1,23 @@
+<header class="custom-header">
+  <div class="container d-flex justify-content-between align-items-center py-2">
+    <!-- Lado izquierdo: Logo -->
+    <div class="logo-container">
+      <img src="assets/logovip.jpeg" alt="Logo" class="logo" />
+    </div>
+
+    <!-- Lado derecho: Icono de carrito de compras -->
+    <button class="cart-btn" (click)="toggleCart()">
+      <i class="bi bi-cart-fill fs-3 text-white"></i>
+    </button>
+  </div>
+</header>
+
+<!-- Menú lateral que aparece cuando se hace clic en el carrito -->
+<div class="ui-core-asside-cart" [class.open]="cartOpen">
+  <div class="cart-content">
+    <h3>Tu Carrito</h3>
+    <p>Aquí van los productos que agregaste.</p>
+    <!-- Agrega el contenido del carrito aquí -->
+    <button (click)="closeCart()">Cerrar</button>
+  </div>
+</div>
