@@ -10,12 +10,18 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { SorteosComponent } from './pages/sorteos/sorteos.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ClickOutsideDirective } from './shared/clickOutside.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SorteosComponent
+    SorteosComponent,
+    HeaderComponent,
+    FooterComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,

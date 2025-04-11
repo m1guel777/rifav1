@@ -34,3 +34,20 @@
 .btn-ver:hover {
   background-color: #0056b3;
 }
+
+
+.container {
+  background-color: #f9f9f9; /* Fondo suave para el contenedor */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Relleno interior */
+}
+
+h2 {
+  color: #333; /* Color de texto para los encabezados */
+}
+
+p {
+  font-size: 1.1rem; /* Tamaño de fuente más grande */
+  color: #555; /* Color gris oscuro para el texto */
+  line-height: 1.6; /* Altura de línea para mejor legibilidad */
+}
