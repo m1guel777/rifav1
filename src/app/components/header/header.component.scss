@@ -41,6 +41,7 @@
   transition: right 0.3s ease;
   box-shadow: -4px 0px 6px rgba(0, 0, 0, 0.5);
   padding: 20px;
+  z-index: 9999;
 }
 
 .ui-core-asside-cart.open {

@@ -1,3 +1,17 @@
+<div class="carrusel-container" *ngIf="imagenes.length > 0">
+  <div class="carrusel-wrapper" [ngStyle]="{ transform: 'translateX(-' + imagenActualIndex * 100 + '%)' }">
+    <img *ngFor="let img of imagenes"
+         [src]="baseUrl + img.img_name"
+         [alt]="img.img_name"
+         class="carrusel-img" />
+  </div>
+  <div class="info">
+    <p><strong>ID:</strong> {{ imagenActual.id_image }}</p>
+    <p><strong>Fecha:</strong> {{ imagenActual.creation_date | date:'short' }}</p>
+  </div>
+</div>
+
+
 
 
 <button (click)="salir()">Salir</button>

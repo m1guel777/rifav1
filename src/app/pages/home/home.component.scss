@@ -51,3 +51,21 @@ p {
   color: #555; /* Color gris oscuro para el texto */
   line-height: 1.6; /* Altura de línea para mejor legibilidad */
 }
+
+
+.sorteo-banner {
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  border-radius: 1rem;
+}
+
+.banner-img-container {
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.banner-img-container img {
+  object-fit: cover;
+  height: 100%;
+}

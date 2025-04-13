@@ -1,35 +1,41 @@
-<div class="sorteos-container">
+<div class="container mt-4">
+  <div class="row" *ngIf="data1?.length > 0">
+    <div class="col-12 mb-4" *ngFor="let item of data1">
+      <div class="card sorteo-banner shadow-lg border-0 text-white d-flex flex-md-row flex-column overflow-hidden">
 
-  <div class="sorteo-card card mb-3">
-    <img src="assets/cheyene.jpg" alt="Mustang 2025" class="card-img-top" />
+        <!-- Imagen del sorteo -->
+        <div class="banner-img-container">
+          <img src="assets/cheyene.jpg" class="h-100 w-100 object-fit-cover" alt="Sorteo" />
+        </div>
 
-    <div class="card-body">
-      <h2 class="card-title">¡CHEYENNE ZR2 2022!</h2>
-      <p class="card-text">
-        ACCESORIZADA 0km, día martes 16 de agosto 2022. Solo necesitas comprar tu boleto por <strong>$100</strong>.
-      </p>
+        <!-- Contenido -->
+        <div class="p-4 d-flex flex-column justify-content-between flex-grow-1">
+          <div>
+            <h3 class="fw-bold mb-2"><i class="bi bi-stars"></i> {{ item.raffle }}</h3>
+            <p class="mb-3">{{ item.description }}</p>
+          </div>
 
-      <!-- Botón para comprar boletos -->
-      <button class="btn btn-success mt-3" >Comprar boleto</button>
+          <div class="d-flex flex-wrap justify-content-between align-items-center mt-2">
+            <span class="fs-5 fw-bold text-warning">$100</span>
+            <div class="d-flex gap-2 mt-2 mt-md-0">
+              <button class="btn btn-light text-dark btn-sm" >
+                <i class="bi bi-eye-fill me-1"></i> Ver detalles
+              </button>
+              <button class="btn btn-success btn-sm" (click)="verSorteoByid(item.raffle_key)">
+                <i class="bi bi-cart-fill me-1"></i> Comprar
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
-
-  <div class="sorteo-card card mb-3">
-    <img src="assets/cheyene.jpg" alt="Mustang 2025" class="card-img-top" />
-
-    <div class="card-body">
-      <h2 class="card-title">¡CHEYENNE ZR2 2022!</h2>
-      <p class="card-text">
-        ACCESORIZADA 0km, día martes 16 de agosto 2022. Solo necesitas comprar tu boleto por <strong>$100</strong>.
-      </p>
-
-      <!-- Botón para comprar boletos -->
-      <button class="btn btn-success mt-3" >Comprar boleto</button>
-    </div>
-  </div>
-
-
 </div>
+
+
+
+
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">

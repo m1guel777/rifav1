@@ -127,3 +127,41 @@
 .participar-btn:hover {
   background-color: #0056b3;
 }
+
+
+
+
+// slide
+.carrusel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.carrusel-wrapper {
+  display: flex;
+  transition: transform 1s ease-in-out; /* Suaviza el desplazamiento entre imágenes */
+}
+
+.carrusel-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.info {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+}
+

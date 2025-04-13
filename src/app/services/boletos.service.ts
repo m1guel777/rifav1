@@ -26,5 +26,9 @@ export class BoletosService {
       return this.http.get<IApiResponseDto>(`${Constants.getLstTickets}${id}`);
      }
 
+     getSorteosImgs(id: number): Observable<IApiResponseDto>{
+      return this.http.get<IApiResponseDto>(`${Constants.getSorteosImgs}/${id}`);
+    }
+
 
 }
