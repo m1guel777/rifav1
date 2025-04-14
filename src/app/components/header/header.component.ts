@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,14 @@ export class HeaderComponent {
 
   cartOpen: boolean = false;
 
+
+    constructor(
+        private router: Router,
+      ){
+
+      }
+
+
   // Método para abrir o cerrar el carrito
   toggleCart() {
     this.cartOpen = !this.cartOpen;
@@ -18,4 +27,10 @@ export class HeaderComponent {
   closeCart() {
     this.cartOpen = false;
   }
+
+
+  goToHome() {
+    this.router.navigate(['/']);
+  }
+
 }

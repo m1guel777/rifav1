@@ -1,40 +1,51 @@
-<div class="carrusel-container" *ngIf="imagenes.length > 0">
-  <div class="carrusel-wrapper" [ngStyle]="{ transform: 'translateX(-' + imagenActualIndex * 100 + '%)' }">
-    <img *ngFor="let img of imagenes"
-         [src]="baseUrl + img.img_name"
-         [alt]="img.img_name"
-         class="carrusel-img" />
+
+<div class="black-background mt-5">
+
+  <div style="text-align: center;" class="mt-5">
+    <h2 class="titulo-sorteo">{{raffle.raffle}}</h2>  <!-- Título llamativo -->
   </div>
-  <div class="info">
-    <p><strong>ID:</strong> {{ imagenActual.id_image }}</p>
-    <p><strong>Fecha:</strong> {{ imagenActual.creation_date | date:'short' }}</p>
+
+
+
+  <div style="width: 100%; max-width: 500px; margin: 0 auto;" class="mt-1">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let img of imagenes">
+        <ng-template carouselSlide>
+          <img
+          [src]="baseUrl + img.img_name"
+          [alt]="img.img_name"
+          style="width: 100%; height: auto; object-fit: contain;" />
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
   </div>
-</div>
+
+
+  <div class="container text-center " [innerHTML]="raffle.description"></div>
 
 
 
+  <button (click)="salir()">Salir</button>
 
-<button (click)="salir()">Salir</button>
-
-<div class="boletos-wrapper">
-  <div class="boletos-container">
-    <div
+  <div class="boletos-wrapper">
+    <div class="boletos-container">
+      <div
       class="boleto"
       *ngFor="let boleto of data1"
 
-    >
-    {{ boleto.number_tk }}
-            {{boleto.opportunities}}
+      >
+      {{ boleto.number_tk }}
+      <!-- {{boleto.opportunities}} -->
     </div>
   </div>
 </div>
 
 
 
-<br>
+</div>
+
+
 <br>
 <br>
 <hr>
 <hr>
-
-

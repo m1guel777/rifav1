@@ -28,8 +28,7 @@ export class AppComponent implements OnInit{
   }
   ngOnInit(): void {
 
-    this.getTickets();
-    // this.getRaffleByid();
+
   }
 
   numeroSelected(number: String){
@@ -39,25 +38,6 @@ export class AppComponent implements OnInit{
 
 
 
-  async getTickets(){
-
-    this.serv.getLstApiKeys().subscribe({
-      next: (rs: IApiResponseDto) => {
-
-        if (!rs.error) {
-          console.log("boletos raflle 1:" , rs);
-          this.data = rs.data;
-        } else {
-          console.log("error :" , rs);
-        }
-      },
-      error: (e) => {
-
-        console.log("error  : Exception" , e.message);
-
-      }
-    });
-  }
 
 
 

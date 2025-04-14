@@ -17,18 +17,18 @@ export class BoletosService {
      }
 
 
-
-     getLstApiKeys(): Observable<IApiResponseDto>{
-      return this.http.get<IApiResponseDto>(`${Constants.getLstTickets}33`);
-     }
-
-     getRaffleByid(id: number): Observable<IApiResponseDto>{
+     getTicketsRaffleByid(id: number): Observable<IApiResponseDto>{
       return this.http.get<IApiResponseDto>(`${Constants.getLstTickets}${id}`);
      }
 
      getSorteosImgs(id: number): Observable<IApiResponseDto>{
       return this.http.get<IApiResponseDto>(`${Constants.getSorteosImgs}/${id}`);
     }
+
+    getSorteosByid(id: number): Observable<IApiResponseDto>{
+      return this.http.get<IApiResponseDto>(`${Constants.getSorteosByid}${id}`);
+    }
+
 
 
 }

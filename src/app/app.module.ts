@@ -13,6 +13,10 @@ import { SorteosComponent } from './pages/sorteos/sorteos.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ClickOutsideDirective } from './shared/clickOutside.directive';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
+
+
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { ClickOutsideDirective } from './shared/clickOutside.directive';
     ScrollingModule,
     MatTableModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
