@@ -1,11 +1,11 @@
 
-<div class="black-background mt-5">
+<div class="black-background ">
 
   <div style="text-align: center;" class="mt-5">
-    <h2 class="titulo-sorteo">{{raffle.raffle}}</h2>  <!-- Título llamativo -->
+    <h2 class="titulo-sorteo">{{raffle.raffle}}
+    </h2>  <!-- Título llamativo -->
+    <p class="sub-titulo-sorteo"> <i class="bi bi-arrow-down"></i> Encuentra los boletos disponibles abajo. <i class="bi bi-arrow-down"></i></p>
   </div>
-
-
 
   <div style="width: 100%; max-width: 500px; margin: 0 auto;" class="mt-1">
     <owl-carousel-o [options]="customOptions">
@@ -20,12 +20,75 @@
     </owl-carousel-o>
   </div>
 
+  <div class="header-top-bar mt-4" >
+        <h3 class="parrafo"> <i class="bi bi-arrow-down"></i> Precios <i class="bi bi-arrow-down"></i></h3>
+        <h5 class="parrafo"> 1 BOLETO POR : {{raffle.price_per_ticket}}</h5>
+        <h5 class="parrafo"> 2 BOLETO POR : {{raffle.price_per_ticket * 2}}</h5>
+        <h5 class="parrafo"> 3 BOLETO POR : {{raffle.price_per_ticket * 3}}</h5>
+        <h5 class="parrafo"> 4 BOLETO POR : {{raffle.price_per_ticket * 4}}</h5>
+        <h5 class="parrafo"> 5 BOLETO POR : {{raffle.price_per_ticket * 5}}</h5>
+
+  </div>
 
   <div class="container text-center " [innerHTML]="raffle.description"></div>
 
 
 
-  <button (click)="salir()">Salir</button>
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
+        <div class="card mb-4" style="width: 100%; max-width: 20rem; box-shadow: 0 8px 12px rgba(255, 48, 48, 0.2);">
+          <div class="card-header bg-danger text-white text-center fw-bold">
+            ¡Primer Lugar!
+          </div>
+          <div class="card-body bg-white text-center">
+            <h5 class="card-title">¡3 mil pesos mx!</h5>
+            <p class="card-text">Compra boletos desde {{raffle.price_per_ticket}} pesos.</p>
+            <i class="bi bi-trophy"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
+        <div class="card mb-4" style="width: 100%; max-width: 20rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+          <div class="card-header bg-dark text-white text-center fw-bold">
+            ¡Segundo!
+          </div>
+          <div class="card-body bg-white text-center">
+            <h5 class="card-title">¡500 pesos mx!</h5>
+            <p class="card-text">Compra boletos desde {{raffle.price_per_ticket}} pesos.</p>
+            <i class="bi bi-award-fill"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
+        <div class="card mb-4" style="width: 100%; max-width: 20rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+          <div class="card-header bg-dark text-white text-center fw-bold">
+            ¡Tercer!
+          </div>
+          <div class="card-body bg-white text-center">
+            <h5 class="card-title">¡500 pesos mx!</h5>
+            <p class="card-text">Compra boletos desde {{raffle.price_per_ticket}} pesos.</p>
+            <i class="bi bi-gem"></i>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div style="text-align: center;" >
+    <h2 class="titulo-sorteo">
+      <p> <i class="bi bi-arrow-down"></i>   ¡Selecciona tus boletos de la suerte!  <i class="bi bi-arrow-down"></i></p>
+    </h2>
+  </div>
+
+
 
   <div class="boletos-wrapper">
     <div class="boletos-container">

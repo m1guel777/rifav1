@@ -14,7 +14,7 @@ import { BoletosService } from 'src/app/services/boletos.service';
 export class SorteosComponent implements OnInit{
 
   public data1 : any;
-  baseUrl: string = 'http://localhost:8082/imagenes/';
+  baseUrl: string = 'http://192.168.1.98:8082/imagenes/';
   imagenes: RaffleImages[] = [];
   imagenActualIndex: number = 0;
 
