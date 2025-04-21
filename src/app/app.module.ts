@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ClickOutsideDirective } from './shared/clickOutside.directive';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -35,7 +36,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatTableModule,
     MatCardModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

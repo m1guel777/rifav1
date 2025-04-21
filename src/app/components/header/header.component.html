@@ -1,18 +1,33 @@
 <div class="header-top-bar"></div>
 
-<header class="custom-header mt-3">
+<!-- <header class="custom-header mt-3">
   <div class="container d-flex justify-content-between align-items-center py-2">
-    <!-- Lado izquierdo: Logo -->
+
     <div class="logo-container">
       <img src="assets/potro.png" alt="Logo" class="logo" (click)="goToHome()"/>
     </div>
-
-    <!-- Lado derecho: Icono de carrito de compras -->
     <button class="cart-btn" (click)="toggleCart()">
       <i class="bi bi-cart-fill fs-3 text-white"></i>
     </button>
   </div>
+</header> -->
+
+
+<header class="custom-header mt-3">
+  <div class="container position-relative">
+    <!-- Botón izquierdo -->
+    <button class="header-btn left-btn" (click)="goToHome()">Menu</button>
+
+    <!-- Logo centrado -->
+    <div class="logo-container position-absolute top-50 start-50 translate-middle">
+      <img src="assets/potro.png" alt="Logo" class="logo" (click)="goToHome()" />
+    </div>
+
+    <!-- Botón derecho -->
+    <button class="header-btn right-btn" (click)="goToHome()">Pagos</button>
+  </div>
 </header>
+
 
 <!-- Menú lateral que aparece cuando se hace clic en el carrito -->
 <div class="ui-core-asside-cart" [class.open]="cartOpen">

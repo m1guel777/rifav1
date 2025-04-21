@@ -15,3 +15,14 @@ export interface Raffle {
   raffles_types_fk: number;
   price_per_ticket: number;
 }
+
+export interface Ticket {
+  tk_key:         number;
+  number_tk:      string;
+  status_cst_key: number;
+  paid_at:        null;
+  reserved_at:    null;
+  client_cli_key: null;
+  raffle_key_fk:  number;
+  opportunities:  string;
+}

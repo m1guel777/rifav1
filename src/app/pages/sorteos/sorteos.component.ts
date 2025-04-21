@@ -4,6 +4,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { IApiResponseDto } from 'src/app/interfaces/IApiResponseDTO';
 import { Raffle, RaffleImages } from 'src/app/interfaces/IRaffle';
 import { BoletosService } from 'src/app/services/boletos.service';
+import { Ticket } from '../../interfaces/IRaffle';
 
 
 @Component({
@@ -17,6 +18,11 @@ export class SorteosComponent implements OnInit{
   baseUrl: string = 'http://192.168.1.98:8082/imagenes/';
   imagenes: RaffleImages[] = [];
   imagenActualIndex: number = 0;
+  public ticketNumber: string = '';
+  public isSearchTicket = false;
+
+  lstTickets : Ticket[] = [];
+  public lstTicketsToApart : Ticket[] = []
 
   raffle: Raffle = {
     raffle_key: null,
@@ -27,6 +33,8 @@ export class SorteosComponent implements OnInit{
     raffles_types_fk: 0,
     price_per_ticket: 0
   }
+
+  ticket: Ticket | undefined = undefined;
 
   customOptions = {
     loop: true,           // Permite que el carrusel se repita
@@ -76,8 +84,8 @@ export class SorteosComponent implements OnInit{
           next: (rs: IApiResponseDto) => {
 
             if (!rs.error) {
-              console.log("boletos raffle 2:" , rs);
-              this.data1 = rs.data;
+              console.log("getTicketsRaffleByid:" , rs);
+              this.lstTickets = rs.data;
 
 
               this.getSorteosImgs(id);
@@ -129,7 +137,7 @@ export class SorteosComponent implements OnInit{
 
             if (!rs.error) {
               this.raffle = rs.data[0];
-              console.log("el sorteo es :" , this.raffle);
+              console.log("el sorteo es getSorteosByid :" , this.raffle);
             } else {
               console.log("error :" , rs);
             }
@@ -142,9 +150,67 @@ export class SorteosComponent implements OnInit{
         });
       }
 
+      onInputChange(event: any) {
+        const value = event.target.value;
+        // Reemplaza todo lo que no sea número
+        this.ticketNumber = value.replace(/[^0-9]/g, '');
 
 
+        this.ticket = this.lstTickets.find(t => t.number_tk === this.ticketNumber);
 
+        if (this.ticket) {
+          console.log('Boleto encontrado:', this.ticket);
+          this.isSearchTicket=true;
+          // Aquí puedes redirigir, mostrar info, etc.
+        } else {
+          this.isSearchTicket=false;
+          // Puedes mostrar un mensaje al usuario
+        }
+
+
+      }
+
+      // Bloquear letras al presionar teclas
+      onlyNumberKey(event: KeyboardEvent): boolean {
+        const charCode = event.which ? event.which : event.keyCode;
+
+        // Permitir solo números (charCode entre 48 y 57 son dígitos del 0 al 9)
+        if (charCode < 48 || charCode > 57) {
+          event.preventDefault();
+          return false;
+        }
+
+        return true;
+      }
+
+      addTicketToLstToApart(){
+        if (this.ticket && this.ticket.status_cst_key!=4)  {
+          this.lstTicketsToApart.push(this.ticket);
+          this.ticket.status_cst_key=4;
+          this.ticket = undefined;
+          this.isSearchTicket=false;
+          this.ticketNumber='';
+        }
+
+        this.ticket = undefined;
+          this.isSearchTicket=false;
+          this.ticketNumber='';
+
+      }
+
+      toggleSelect(boleto: Ticket) {
+        if(boleto.status_cst_key!=4){
+          this.lstTicketsToApart.push(boleto);
+          boleto.status_cst_key=4;
+
+        }
+
+      }
+
+      removeFromApart(boleto: Ticket) {
+        this.lstTicketsToApart = this.lstTicketsToApart.filter(t => t.number_tk !== boleto.number_tk);
+        boleto.status_cst_key=1;
+      }
 
 
 }
