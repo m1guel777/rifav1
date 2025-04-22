@@ -1,37 +1,31 @@
-
 <div class="black-background ">
 
-  <div style="text-align: center;" class="mt-3">
-    <h2 class="titulo-sorteo">{{raffle.raffle}}</h2>  <!-- Título llamativo -->
-    <!-- <p class="sub-titulo-sorteo"> <i class="bi bi-arrow-down"></i> Encuentra los boletos disponibles abajo. <i class="bi bi-arrow-down"></i></p> -->
+  <div style="text-align: center;">
+    <h2 class="titulo-sorteo">{{raffle.raffle}}</h2>
   </div>
 
   <div style="width: 100%; max-width: 500px; margin: 0 auto;" class="mt-1">
     <owl-carousel-o [options]="customOptions">
       <ng-container *ngFor="let img of imagenes">
         <ng-template carouselSlide>
-          <img
-          [src]="baseUrl + img.img_name"
-          [alt]="img.img_name"
-          style="width: 100%; height: auto; object-fit: contain;" />
+          <img [src]="baseUrl + img.img_name" [alt]="img.img_name"
+            style="width: 100%; height: auto; object-fit: contain;" />
         </ng-template>
       </ng-container>
     </owl-carousel-o>
   </div>
 
-  <div class="header-top-bar mt-2" >
-        <h3 class="parrafo"> <i class="bi bi-arrow-down"></i> Precios <i class="bi bi-arrow-down"></i></h3>
-        <h5 class="parrafo"> 1 BOLETO POR : {{raffle.price_per_ticket}}</h5>
-        <h5 class="parrafo"> 2 BOLETO POR : {{raffle.price_per_ticket * 2}}</h5>
-        <h5 class="parrafo"> 3 BOLETO POR : {{raffle.price_per_ticket * 3}}</h5>
-        <h5 class="parrafo"> 4 BOLETO POR : {{raffle.price_per_ticket * 4}}</h5>
-        <h5 class="parrafo"> 5 BOLETO POR : {{raffle.price_per_ticket * 5}}</h5>
+  <div class="header-top-bar mt-2">
+    <h3 class="parrafo"> <i class="bi bi-arrow-down"></i> Precios <i class="bi bi-arrow-down"></i></h3>
+    <h5 class="parrafo"> 1 BOLETO POR : {{raffle.price_per_ticket}}</h5>
+    <h5 class="parrafo"> 2 BOLETO POR : {{raffle.price_per_ticket * 2}}</h5>
+    <h5 class="parrafo"> 3 BOLETO POR : {{raffle.price_per_ticket * 3}}</h5>
+    <h5 class="parrafo"> 4 BOLETO POR : {{raffle.price_per_ticket * 4}}</h5>
+    <h5 class="parrafo"> 5 BOLETO POR : {{raffle.price_per_ticket * 5}}</h5>
 
   </div>
 
   <div class="container text-center " [innerHTML]="raffle.description"></div>
-
-
 
   <!-- <div class="container mt-3">
     <div class="row justify-content-center">
@@ -79,68 +73,37 @@
     </div>
   </div> -->
 
+  <div style="text-align: center;" class="mt-2">
+    <h2 class="titulo-sorteo"> ¡Aparta tus boletos de la suerte! </h2>
+
+    <!-- <button class="btn-pagar-rojo m-2" *ngIf="lstTicketsToApart.length > 0">
+      Apartar boletos
+    </button> -->
 
 
-  <div style="text-align: center;" class="mt-2 header-top-bar" >
-    <h2 class="titulo-sorteo">    ¡Aparta tus boletos de la suerte!  </h2>
-      <div class="boletos-apart-container">
-        <ng-container *ngFor="let boleto of lstTicketsToApart">
-          <div class="boleto" (click)="removeFromApart(boleto)">
-            {{ boleto.number_tk }}
-          </div>
-        </ng-container>
-      </div>
 
-      <button class="btn btn-danger">Pagar boletos</button>
   </div>
 
 
-  <!-- <div style="text-align: center;"  class="mt-2">
-    <div class="header-top-bar">
-    </div>
-  </div> -->
+
 
 
   <div class="mt-1 text-center  ">
-    <input
-    type="text"
-    inputmode="numeric"
-    pattern="[0-9]*"
-    placeholder="Buscar"
-    class="ticket-search-input"
-    [(ngModel)]="ticketNumber"
-    maxlength="5"
-    (keypress)="onlyNumberKey($event)"
-    (input)="onInputChange($event)"
-     />
+    <input type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Buscar" class="ticket-search-input"
+      [(ngModel)]="ticketNumber" maxlength="5" (keypress)="onlyNumberKey($event)" (input)="onInputChange($event)" />
 
 
+    <div class="text-center text-danger" *ngIf="isSearchTicket==false && ticketNumber !== '' ">
+      <p><i class="bi bi-x-circle p-1 text-danger fs-4"></i> Boleto no disponible</p>
+    </div>
+    <div class="text-center text-success" *ngIf="isSearchTicket==true">
+      <p><i class="bi bi-check-circle p-1 fs-4"></i> Boleto disponible</p>
+      <button class="btn btn-success" (click)="addTicketToLstToApart()">Seleccionar</button>
 
-
-
-       <div class="text-center text-danger" *ngIf="isSearchTicket==false && ticketNumber !== '' ">
-
-        <p><i class="bi bi-x-circle p-1 text-danger fs-4"></i> Boleto no disponible</p>
-
-     </div>
-
-       <div class="text-center text-success" *ngIf="isSearchTicket==true">
-
-         <p><i class="bi bi-check-circle p-1 fs-4"></i> Boleto disponible</p>
-         <button class="btn btn-success" (click)="addTicketToLstToApart()">Seleccionar</button>
-
-
-
-      </div>
-
-
+    </div>
   </div>
 
-
-
-
-
-  <div class="mt-2 text-center" >
+  <div class="mt-2 text-center">
     <button class="btnAzar">
       ¡Numeros al azar!
       <span></span>
@@ -148,31 +111,37 @@
       <span></span>
       <span></span>
     </button>
-</div>
+  </div>
 
 
-
-  <!-- <div class="boletos-wrapper">
+  <div class="boletos-wrapper mt-3">
     <div class="boletos-container">
-      <div class="boleto" *ngFor="let boleto of lstTickets">
-      {{ boleto.number_tk }}
+      <ng-container *ngFor="let boleto of lstTickets">
+        <div class="boleto" [class.boleto-seleccionado]="boleto.status_cst_key==4" (click)="toggleSelect(boleto)">
+          <span *ngIf="boleto.status_cst_key!=4">{{ boleto.number_tk }}</span>
+        </div>
+      </ng-container>
     </div>
   </div>
-</div> -->
 
+  <div class="test" [hidden]="lstTicketsToApart.length === 0">
+    <button class="btn-pagar-rojo m-2">
+      Apartar boletos
+    </button>
 
+    <div class="boletos-apart-container" *ngIf="lstTicketsToApart.length > 0">
+      <ng-container *ngFor="let boleto of lstTicketsToApart">
+        <div class="boleto" (click)="removeFromApart(boleto)">
+          {{ boleto.number_tk }}
+        </div>
+      </ng-container>
+    </div>
 
-
-<div class="boletos-wrapper">
-  <div class="boletos-container">
-    <ng-container *ngFor="let boleto of lstTickets">
-      <div class="boleto" [class.boleto-seleccionado]="boleto.status_cst_key==4" (click)="toggleSelect(boleto)">
-        <span *ngIf="boleto.status_cst_key!=4">{{ boleto.number_tk }}</span>
-      </div>
-    </ng-container>
+    <p class="label-warning" *ngIf="lstTicketsToApart.length > 0">
+      {{ lstTicketsToApart.length }} Boletos seleccionados<br>
+      Para eliminar haz click en el boleto
+    </p>
   </div>
-</div>
-
 
 
 </div>
@@ -180,5 +149,30 @@
 
 <br>
 <br>
-<hr>
-<hr>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>

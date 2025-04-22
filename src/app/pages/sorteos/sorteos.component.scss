@@ -5,14 +5,19 @@
 .boletos-wrapper {
   width: 100%; /* 100% del contenedor */
   max-width: 98vw; /* Aseguramos que no se exceda del 98% del ancho de la pantalla */
-  height: 80vh;
+  height: 50vh;
   overflow-y: auto;
   padding: 10px;
   box-sizing: border-box;
   background-color: #ffffff;
   // border: 2px solid #ff3030;
-  border-radius: 12px;
+  // border-radius: 12px;
   margin: 0 auto; /* Centra el contenedor */
+  padding-bottom: 60px;
+
+  border-bottom: 2px solid #ff3030; /* 👈 Borde solo en la parte inferior */
+  border-radius: 0 0 12px 12px; /* Redondeado solo abajo */
+
 }
 
 
@@ -152,7 +157,7 @@
 
 // slide
 .titulo-sorteo {
-  font-size: 2rem;      /* Tamaño grande */
+  font-size: 1.4rem;      /* Tamaño grande */
   font-weight: bold;    /* Negrita para resaltar */
   color: white;       /* Color llamativo (puedes cambiarlo) */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para darle efecto */
@@ -198,15 +203,38 @@
     padding: 20px 0;
   }
 
+
+
   .header-top-bar .parrafo {
     color: white;
     font-weight: bold;
     margin: 1.2px 0; /* reduce el espacio entre los párrafos */
     text-align: center;
-
   }
 
+  .lstAparts{
+    background-color: black;
+    position: sticky;
+    top: 100px; /* Ajusta según el alto de tu header */
+    z-index: 9998;
+    padding: 10px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
 
+  .test{
+    position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  z-index: 9999;
+  padding: 10px 0;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.25);
+  color: white;
+  text-align: center;
+  transition: transform 0.3s ease;
+  }
 
 
 .btnAzar{
@@ -323,7 +351,7 @@
   padding: 10px 15px;
   font-size: 1rem;
   border-radius: 8px;
-  border: 1px solid #aaa;
+  border: 1px solid red;
   width: 250px;
   max-width: 80%;
   text-align: center;
@@ -342,7 +370,28 @@ ul:hover {
   padding: 20px;
   flex-wrap: wrap;
   justify-content: center;
-  max-height: 100px; /* Ajusta según lo que quieras mostrar */
+  max-height: 80px; /* Ajusta según lo que quieras mostrar */
   overflow-y: auto;
+
+
 }
 
+.btn-pagar-rojo {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
+  border: none;
+  transition: transform 0.2s ease;
+}
+
+.label-warning{
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: yellow;
+
+  margin: 0;           /* elimina separación entre párrafos */
+  line-height: 1.4;
+}

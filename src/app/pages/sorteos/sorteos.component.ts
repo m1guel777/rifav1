@@ -22,7 +22,7 @@ export class SorteosComponent implements OnInit{
   public isSearchTicket = false;
 
   lstTickets : Ticket[] = [];
-  public lstTicketsToApart : Ticket[] = []
+  public lstTicketsToApart : Ticket[] = [];
 
   raffle: Raffle = {
     raffle_key: null,
