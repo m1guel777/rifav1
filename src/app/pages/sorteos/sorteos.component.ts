@@ -54,6 +54,13 @@ export class SorteosComponent implements OnInit{
   };
 
 
+  //modal
+  mostrarModal: boolean = false;
+  cantidades = [1, 2, 3, 5, 10];
+  cantidadSeleccionada = 1;
+  boletosGenerados: string[] = [];
+
+
   constructor(private  serv: BoletosService,
         private route: ActivatedRoute,
         private router: Router
@@ -212,5 +219,68 @@ export class SorteosComponent implements OnInit{
         boleto.status_cst_key=1;
       }
 
+      //modal
+      abrirMaquinita() {
+        this.mostrarModal = true;
+        this.boletosGenerados = [];
+      }
+
+      cerrarMaquinita() {
+        this.mostrarModal = false;
+      }
+
+      generarBoletos() {
+        // const disponibles = [...this.boletosDisponibles];
+        // this.boletosGenerados = [];
+
+        // for (let i = 0; i < this.cantidadSeleccionada; i++) {
+        //   if (disponibles.length === 0) break;
+        //   const index = Math.floor(Math.random() * disponibles.length);
+        //   const boleto = disponibles.splice(index, 1)[0];
+        //   this.boletosGenerados.push(boleto);
+        // }
+      }
+
+      girar() {
+        // Obtener los elementos de los números con la aserción de tipo
+        const numero1 = document.getElementById('numero1') as HTMLElement;
+        const numero2 = document.getElementById('numero2') as HTMLElement;
+        const numero3 = document.getElementById('numero3') as HTMLElement;
+
+        // Iniciar animación para el giro de los números
+        numero1.style.transform = 'rotateX(360deg)';
+        numero2.style.transform = 'rotateX(360deg)';
+        numero3.style.transform = 'rotateX(360deg)';
+
+        // Después de la animación (0.5s), actualizamos los números
+        setTimeout(() => {
+          // Siempre mostrar el número 7
+          numero1.textContent = '7';
+          numero2.textContent = '7';
+          numero3.textContent = '7';
+
+          // Reiniciar animación
+          numero1.style.transform = 'rotateX(0deg)';
+          numero2.style.transform = 'rotateX(0deg)';
+          numero3.style.transform = 'rotateX(0deg)';
+        }, 500); // 500 ms es el tiempo de la animación
+      }
+
+      // Definir la función generarNumero() (ya no es necesaria)
+      generarNumero(): number {
+        return 7;  // Siempre retorna el número 7
+      }
+
+
+      isClicked = false;
+
+  activarEfecto() {
+    this.isClicked = true;
+
+    // Quita el efecto después de un tiempo para permitir volver a hacerlo
+    setTimeout(() => {
+      this.isClicked = false;
+    }, 1500); // un poco más que el tiempo de animación (0.5s)
+  }
 
 }
