@@ -115,7 +115,7 @@
   </div>
 
 <!-- Modal -->
-<div class="modal fade" id="maquinitaModal" tabindex="-1" aria-labelledby="maquinitaModalLabel" aria-hidden="true">
+<div class="modal fade" id="maquinitaModal" tabindex="-1" aria-labelledby="maquinitaModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog modal-dialog-centered"> <!-- Añadido modal-dialog-centered -->
     <div class="modal-content">
 
@@ -137,6 +137,9 @@
       <!-- Cuerpo del modal -->
       <div class="modal-body">
 
+
+
+
         <div class="mb-3 text-center">
           <label for="cantidadBoletos" class="form-label fw-bold">Selecciona la cantidad de boletos que deseas generar:</label>
           <select
@@ -150,15 +153,42 @@
           </select>
         </div>
 
-        <div class="box-maquina p-3 d-flex justify-content-center align-items-center" (click)="activarEfecto()">
 
-          <h3 *ngIf="!isClicked">Haz click aqui para seleccionar {{cantidadSeleccionada}} al azar</h3>
+
+
+        <div class="box-maquina p-3 d-flex align-items-center text-center" (click)="activarEfecto()">
+
+
+          <div class="boletos-wrapper-maquinita " *ngIf="raffle.oportunities==false">
+            <div class="boletos-container-maquina">
+              <ng-container *ngFor="let boleto of lstTicketsMaquinita">
+                <div class="boleto">
+                  <span>{{ boleto.number_tk }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+
+          <div class="boletos-wrapper-maquinita" *ngIf="raffle.oportunities==true && isClicked==false" >
+            <div class="boletos-container-maquina">
+              <ng-container *ngFor="let boleto of lstTicketsMaquinita">
+                <div class="boleto-oportunities">
+                  <span class="principal">Boletos: [{{ boleto.number_tk }}]</span>
+                  <span class="opportunities"> - Gratis: {{ boleto.opportunities }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+
+          <h3 *ngIf="!isClicked"  class="mt-2">Haz click aqui para seleccionar {{cantidadSeleccionada}} al azar</h3>
 
           <img
           src="assets/maquina.png"
           [class.clicked]="isClicked"
           [class.shake]="isClicked"
-          class="maquinita-img"
+          class="maquinita-img mt-5"
           alt="Maquinita de la suerte"
           *ngIf="isClicked"
         />

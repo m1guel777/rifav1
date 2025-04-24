@@ -14,6 +14,7 @@ export interface Raffle {
   description:      string;
   raffles_types_fk: number;
   price_per_ticket: number;
+  oportunities: boolean;
 }
 
 export interface Ticket {

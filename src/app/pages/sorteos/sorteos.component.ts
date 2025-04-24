@@ -23,6 +23,8 @@ export class SorteosComponent implements OnInit{
 
   lstTickets : Ticket[] = [];
   public lstTicketsToApart : Ticket[] = [];
+  public lstTicketsMaquinita : Ticket[] = [];
+
 
   raffle: Raffle = {
     raffle_key: null,
@@ -31,7 +33,8 @@ export class SorteosComponent implements OnInit{
     raffle: '',
     description: '',
     raffles_types_fk: 0,
-    price_per_ticket: 0
+    price_per_ticket: 0,
+    oportunities: false
   }
 
   ticket: Ticket | undefined = undefined;
@@ -56,7 +59,7 @@ export class SorteosComponent implements OnInit{
 
   //modal
   mostrarModal: boolean = false;
-  cantidades = [1, 2, 3, 5, 10];
+  cantidades = [1, 2, 3, 5, 10, 30];
   cantidadSeleccionada = 1;
   boletosGenerados: string[] = [];
 
@@ -241,30 +244,7 @@ export class SorteosComponent implements OnInit{
         // }
       }
 
-      girar() {
-        // Obtener los elementos de los números con la aserción de tipo
-        const numero1 = document.getElementById('numero1') as HTMLElement;
-        const numero2 = document.getElementById('numero2') as HTMLElement;
-        const numero3 = document.getElementById('numero3') as HTMLElement;
 
-        // Iniciar animación para el giro de los números
-        numero1.style.transform = 'rotateX(360deg)';
-        numero2.style.transform = 'rotateX(360deg)';
-        numero3.style.transform = 'rotateX(360deg)';
-
-        // Después de la animación (0.5s), actualizamos los números
-        setTimeout(() => {
-          // Siempre mostrar el número 7
-          numero1.textContent = '7';
-          numero2.textContent = '7';
-          numero3.textContent = '7';
-
-          // Reiniciar animación
-          numero1.style.transform = 'rotateX(0deg)';
-          numero2.style.transform = 'rotateX(0deg)';
-          numero3.style.transform = 'rotateX(0deg)';
-        }, 500); // 500 ms es el tiempo de la animación
-      }
 
       // Definir la función generarNumero() (ya no es necesaria)
       generarNumero(): number {
@@ -272,15 +252,45 @@ export class SorteosComponent implements OnInit{
       }
 
 
-      isClicked = false;
+
+  isClicked = false;
+
+
 
   activarEfecto() {
     this.isClicked = true;
 
+    this.lstTicketsMaquinita =this.getRandomTickets(this.cantidadSeleccionada);
     // Quita el efecto después de un tiempo para permitir volver a hacerlo
     setTimeout(() => {
       this.isClicked = false;
     }, 1500); // un poco más que el tiempo de animación (0.5s)
   }
+
+
+  getRandomTickets(cantidad: number) {
+    // Filtramos los tickets que no han sido seleccionados
+  const ticketsDisponibles = this.lstTickets.filter(ticket => ticket.status_cst_key!==4);
+
+  // Si hay suficientes boletos disponibles, seleccionamos 'cantidad' boletos aleatorios
+  const seleccionados: Ticket[] = [];
+  while (seleccionados.length < cantidad && ticketsDisponibles.length > 0) {
+    const randomIndex = Math.floor(Math.random() * ticketsDisponibles.length);
+    const ticketSeleccionado = ticketsDisponibles.splice(randomIndex, 1)[0]; // Tomamos un ticket aleatorio
+    // ticketSeleccionado.isSelected = true; // Marcamos el ticket como seleccionado
+    seleccionados.push(ticketSeleccionado); // Lo agregamos a la lista de seleccionados
+  }
+
+  console.log(seleccionados);
+  return seleccionados;  // Retornamos los boletos seleccionados
+  }
+
+  // Función para obtener boletos al azar excluyendo los ya seleccionados
+getAvailableTickets(): Ticket[] {
+  // Creamos una lista de boletos no seleccionados
+  return this.lstTickets.filter(ticket => ticket.status_cst_key!=4);
+}
+
+
 
 }
