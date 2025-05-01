@@ -37,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     HttpClientModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

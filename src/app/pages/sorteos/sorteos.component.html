@@ -98,14 +98,14 @@
     </div>
     <div class="text-center text-success" *ngIf="isSearchTicket==true">
       <p><i class="bi bi-check-circle p-1 fs-4"></i> Boleto disponible</p>
-      <button class="btn btn-success" (click)="addTicketToLstToApart()">Seleccionar</button>
+      <button class="btn btn-success mt-0" (click)="addTicketToLstToApart()">Seleccionar</button>
 
     </div>
   </div>
 
   <!-- Botón para abrir el modal -->
   <div class="mt-2 text-center">
-    <button class="btnAzar" (click)="abrirMaquinita()" data-bs-toggle="modal" data-bs-target="#maquinitaModal">
+    <button class="btnAzar"  (click)="openModalTicketsRandom()">
       ¡🎰 Maquinita de la Suerte!
       <span></span>
       <span></span>
@@ -114,7 +114,7 @@
     </button>
   </div>
 
-<!-- Modal -->
+<!-- Modal maquinita-->
 <div class="modal fade" id="maquinitaModal" tabindex="-1" aria-labelledby="maquinitaModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog modal-dialog-centered"> <!-- Añadido modal-dialog-centered -->
     <div class="modal-content">
@@ -126,9 +126,7 @@
         <!-- Botón de cerrar alineado a la derecha, pero dentro del mismo div -->
         <button
           type="button"
-          class="position-absolute top-0 end-0 m-2 p-2"
-          data-bs-dismiss="modal"
-          aria-label="Close">
+          class="position-absolute top-0 end-0 m-2 p-2" (click)="closeModalTicketsRandomButton()">
           <i class="bi bi-x-lg "></i>
         </button>
       </div>
@@ -141,7 +139,7 @@
 
 
         <div class="mb-3 text-center">
-          <label for="cantidadBoletos" class="form-label fw-bold">Selecciona la cantidad de boletos que deseas generar:</label>
+          <label for="cantidadBoletos" class="form-label fw-bold fs-5">Cantidad de boletos a generar:</label>
           <select
             id="cantidadBoletos"
             class="form-select w-50 d-inline-block"
@@ -185,7 +183,7 @@
           <h3 *ngIf="!isClicked"  class="mt-2">Haz click aqui para seleccionar {{cantidadSeleccionada}} al azar</h3>
 
           <img
-          src="assets/maquina.png"
+          src="assets/mk-suerte.jpeg"
           [class.clicked]="isClicked"
           [class.shake]="isClicked"
           class="maquinita-img mt-5"
@@ -194,19 +192,25 @@
         />
         </div>
 
+        <div class="mt-0 text-center" *ngIf="lstTicketsMaquinita.length > 0 && !isClicked">
+          <button class="btn-apartar-boleto"   (click)="apartTickets()">
+            ¡Apartar Boletos!
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
       </div>
 
       <!-- Footer del modal -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-secondary mt-0"  (click)="closeModalTicketsRandomButton()">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
 
   <div class="boletos-wrapper mt-3">
     <div class="boletos-container">
@@ -218,8 +222,9 @@
     </div>
   </div>
 
-  <div class="test" [hidden]="lstTicketsToApart.length === 0">
-    <button class="btn-pagar-rojo m-2">
+  <!-- || showModalTkRandom===true || showModalClient===true -->
+  <div class="test" *ngIf="shouldShowTicketsToApart" @fadeInOut>
+    <button class="btn-pagar-rojo m-2" (click)="openModalClient()">
       Apartar boletos
     </button>
 
@@ -236,6 +241,60 @@
       Para eliminar haz click en el boleto
     </p>
   </div>
+
+
+
+  <!-- Modal clienteModal-->
+<div class="modal fade" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered"> <!-- Añadido modal-dialog-centered -->
+    <div class="modal-content">
+
+      <!-- Header del modal -->
+      <div class="titulo-sorteo d-flex justify-content-center w-100 position-relative">
+        <h5 class="modal-title m-0" id="clienteModalLabel">Registro de cliente</h5>
+
+        <!-- Botón de cerrar alineado a la derecha, pero dentro del mismo div -->
+        <button
+          type="button"
+          class="position-absolute top-0 end-0 m-2 p-2"
+          data-bs-dismiss="modal"
+          aria-label="Close">
+          <i class="bi bi-x-lg "></i>
+        </button>
+      </div>
+
+
+      <!-- Cuerpo del modal -->
+      <div class="modal-body">
+
+        <h2>{{lstTicketsToApart.length}} Boletos seleccionados</h2>
+
+
+        <div class="mb-3">
+          <label for="clienteNombre" class="form-label">Nombre del cliente</label>
+          <input type="text" id="clienteNombre" class="form-control"  />
+        </div>
+
+        <div class="mb-3">
+          <label for="clienteTelefono" class="form-label">Número de teléfono</label>
+          <input type="tel" id="clienteTelefono" class="form-control"  />
+        </div>
+
+        <div class="mb-3">
+          <label for="clienteEstado" class="form-label">Estado</label>
+          <input type="text" id="clienteEstado" class="form-control"  />
+        </div>
+
+      </div>
+
+      <!-- Footer del modal -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 </div>
